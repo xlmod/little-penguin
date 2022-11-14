@@ -1,0 +1,25 @@
+From b1dc51d3c71ef7b85f61e204ff0001004e9c0ccc Mon Sep 17 00:00:00 2001
+From: glafond- <glafond-@student.42.fr>
+Date: Tue, 8 Nov 2022 16:32:02 +0100
+Subject: [PATCH] Change EXTRAVERSION
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index ac2ec990422d..fc567e4be2bb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 1
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc4
++EXTRAVERSION = -thor_kernel
+ NAME = Hurr durr I'ma ninja sloth
+ 
+ # *DOCUMENTATION*
+-- 
+2.37.2
+
