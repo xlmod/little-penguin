@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{bInterfaceClass}=="03", ATTRS{bInterfaceProtocol}=="01", RUN+="/usr/sbin/insmod /root/little-penguin/04/usb_keyboard_module.ko"
