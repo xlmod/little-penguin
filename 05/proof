@@ -1,0 +1,14 @@
+$ insmod char_device_driver.ko
+$ echo -n 'glafond-' > /dev/fortytwo
+$ echo -n 'error' > /dev/fortytwo
+-bash: echo: write error: Invalid argument
+$ cat /dev/fortytwo
+glafond-
+$ rmmod char_device_driver.ko
+$ dmesg | tail -6
+[14694.498913] misc_char_device: [/dev/fortytwo] registered!
+[14710.931595] [/dev/fortytwo] written!
+[14721.643935] [/dev/fortytwo] write error: invalid value!
+[14755.357423] [/dev/fortytwo] read!
+[14755.358233] [/dev/fortytwo] read!
+[14849.455499] misc_char_device: [/dev/fortytwo] deregistered!
