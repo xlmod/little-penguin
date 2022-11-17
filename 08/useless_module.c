@@ -43,30 +43,28 @@ static void __exit myfd_cleanup(void)
 
 ssize_t myfd_read(struct file *fp, char __user *user, size_t size, loff_t *offs)
 {
-	size_t t, i;
-	char *tmp2;
+	size_t i;
+	ssize_t retval;
+	char *tmp, *t, *s;
 
-	/*
-	 * Malloc like a boss
-	 */
-	tmp2 = kmalloc(sizeof(char) * PAGE_SIZE, GFP_KERNEL);
-	tmp = tmp2;
-	for (t = strlen(str) - 1, i = 0; t >= 0; t--, i++)
-		tmp[i] = str[t];
-	tmp[i] = 0x0;
-	return simple_read_from_buffer(user, size, offs, tmp, i);
+	tmp = kmalloc(sizeof(char) * PAGE_SIZE, GFP_KERNEL);
+	s = str;
+	while (*s)
+		s++;
+	i = s - str;
+	t = tmp;
+	while (s != str)
+		*t++ = *--s;
+	*t = 0x0;
+	retval = simple_read_from_buffer(user, size, offs, tmp, i);
+	kfree(tmp);
+	return retval;
 }
 
 ssize_t myfd_write(struct file *fp, const char __user *user, size_t size, loff_t *offs)
 {
-	ssize_t res;
-
-	if (size >= PAGE_SIZE)
-		size = PAGE_SIZE - 1;
-	res = simple_write_to_buffer(str, size, offs, user, size) + 1;
-	// 0x0 = ’\0’
-	str[size + 1] = 0x0;
-	return res;
+	memset(str, 0, PAGE_SIZE);
+	return simple_write_to_buffer(str, PAGE_SIZE - 1, offs, user, size);
 }
 
 module_init(myfd_init);
