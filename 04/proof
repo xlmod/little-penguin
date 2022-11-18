@@ -1,0 +1,3 @@
+[15701.706153] glafond-: Module Loaded!
+[15701.715892] input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb2/2-1/2-1:1.0/0003:80EE:0021.0005/input/input10
+[15701.716282] hid-generic 0003:80EE:0021.0005: input,hidraw0: USB HID v1.10 Mouse [VirtualBox USB Tablet] on usb-0000:00:06.0-1/input0
