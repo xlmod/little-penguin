@@ -4,8 +4,9 @@
 #include <linux/init.h>
 #include <linux/proc_fs.h>
 #include <linux/nsproxy.h>
-#include <../fs/mount.h>
 #include <linux/delay.h>
+#include <linux/slab.h>
+#include <../fs/mount.h>
 
 #define MNAME "mymounts"
 
